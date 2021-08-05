@@ -1,4 +1,4 @@
-package com.mycompany;
+package com.mycompany.Basics;
 
 public class StackOverflow {
     public static void main(String[] args){
