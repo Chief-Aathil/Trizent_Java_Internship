@@ -8,10 +8,12 @@ public class Beta {
 
     public static void main(String[] args) {
         Beta bObj = new Beta();
+        System.out.println(bObj.b_Public);
         System.out.println(bObj.b_NoModifier);
         System.out.println(bObj.b_protected);
         System.out.println(bObj.b_private);
         Alpha aObj = new Alpha();
+        System.out.println(aObj.a_Public);
         System.out.println(aObj.a_NoModifier);
         System.out.println(aObj.a_Protected);
 //        System.out.println(aObj.a_Private); //Error: Private members are inaccessible outside class.
