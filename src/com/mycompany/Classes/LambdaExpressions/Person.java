@@ -24,7 +24,7 @@ public class Person {
         }
 
         public void printPerson() {
-                System.out.println("Name: " + name + "\t Sex: " + gender + "Age: " + age);
+                System.out.println("Name: " + name + "\t Sex: " + gender + " \tage: " + age);
         }
 
         public static List<Person> constructList() {
