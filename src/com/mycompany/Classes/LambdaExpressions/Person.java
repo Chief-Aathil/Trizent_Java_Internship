@@ -32,6 +32,8 @@ public class Person {
                 list.add(new Person("Person1", SEX.MALE, 10));
                 list.add(new Person("Person2", SEX.FEMALE, 20));
                 list.add(new Person("Person3", SEX.MALE, 30));
+                list.add(new Person("Person4", SEX.FEMALE, 40));
+                list.add(new Person("Person5", SEX.MALE, 50));
                 return list;
         }
 
