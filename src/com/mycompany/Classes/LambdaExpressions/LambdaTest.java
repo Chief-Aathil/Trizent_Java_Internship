@@ -5,6 +5,10 @@ import java.util.List;
 
 public class LambdaTest {
 
+    interface CheckPerson {
+        boolean test(Person p);
+    }
+
     /**
      * Approach1:
      * Sample criterion: get person older that given age and do some action(here print) on them.
@@ -35,10 +39,40 @@ public class LambdaTest {
     }
 
 
+    /**
+     * Approach3:
+     * You can create a Local Class for each new search criteria. This class should implement
+     * an interface which can be used by the action to make it future-proof(ie, changes it the Person class
+     * will not require changes in the usage, but only in the Local Class.
+     * Also, you will need to create new Local Class for new search criterion.
+     */
+    public static void printPersons(List<Person> list, CheckPerson tester) {
+        for (Person p : list) {
+            if (tester.test(p)) {
+                p.printPerson();
+            }
+        }
+    }
+
     public static void main(String[] args) {
         LambdaTest testObj = new LambdaTest();
         List<Person> personList = Person.constructList();
+        System.out.println("The list is:");
+        for (Person p : personList) {
+            p.printPerson();
+        }
+        System.out.println("\nSearching...");
         //testObj.printPersonOlderThan(personList, 15); //Approach 1
-        testObj.printPersonWithinRange(personList, 15, 40);
+        //testObj.printPersonWithinRange(personList, 15, 40);//Approach2
+
+        //Approach3:
+        //This is the class for defining search criterion.
+        class CheckPersonForAdultMale implements CheckPerson {
+            public boolean test(Person p) {
+                return p.getAge() > 18 && p.gender == Person.SEX.MALE;//18+ Male
+            }
+
+        }
+        printPersons(personList, new CheckPersonForAdultMale());
     }
 }
