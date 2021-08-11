@@ -43,8 +43,8 @@ public class LambdaTest {
     /*
      * Approach3:
      * You can create a Local Class for each new search criteria. This class should implement
-     * an interface which can be used by the action to make it future-proof(ie, changes it the Person class
-     * will not require changes in the usage, but only in the Local Class.
+     * an interface which can be used by the action to make it future-proof(ie, changes in the Person class
+     * will not require changes in the usage, but only in the Local Class.)
      * Also, you will need to create new Local Class for new search criterion.
      */
 
