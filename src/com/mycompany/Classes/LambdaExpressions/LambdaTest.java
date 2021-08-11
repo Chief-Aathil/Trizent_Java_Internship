@@ -9,7 +9,7 @@ public class LambdaTest {
         boolean test(Person p);
     }
 
-    /**
+    /*
      * Approach1:
      * Sample criterion: get person older that given age and do some action(here print) on them.
      * Drawback of this approach is that you will have to create a new method for each new criterion.
@@ -22,7 +22,7 @@ public class LambdaTest {
         }
     }
 
-    /**
+    /*
      * Approach2:
      * Create a more flexible search method.You could create a method that will some arguments to check for a
      * pattern ( eg: age<x, name starts with 'A', MALE). For simplicity, we are showing function that can take
@@ -39,12 +39,18 @@ public class LambdaTest {
     }
 
 
-    /**
+    /*
      * Approach3:
      * You can create a Local Class for each new search criteria. This class should implement
      * an interface which can be used by the action to make it future-proof(ie, changes it the Person class
      * will not require changes in the usage, but only in the Local Class.
      * Also, you will need to create new Local Class for new search criterion.
+     */
+
+    /*
+     * Approach4:
+     * Instead of new Local class you can use Anonymous class while calling printPerson(). This will make the
+     * code more concise.
      */
     public static void printPersons(List<Person> list, CheckPerson tester) {
         for (Person p : list) {
@@ -62,17 +68,29 @@ public class LambdaTest {
             p.printPerson();
         }
         System.out.println("\nSearching...");
-        //testObj.printPersonOlderThan(personList, 15); //Approach 1
-        //testObj.printPersonWithinRange(personList, 15, 40);//Approach2
+        System.out.println("\nApproach1: Person with age>15");
+        testObj.printPersonOlderThan(personList, 15); //Approach 1
+        System.out.println("\nApproach 2: Person with age=[15,40]");
+        testObj.printPersonWithinRange(personList, 15, 40);//Approach2
 
         //Approach3:
         //This is the class for defining search criterion.
+        System.out.println("\nApproach3:18+M");
         class CheckPersonForAdultMale implements CheckPerson {
             public boolean test(Person p) {
-                return p.getAge() > 18 && p.gender == Person.SEX.MALE;//18+ Male
+                return p.getAge() > 18 && p.gender == Person.SEX.MALE; //18+ Male
             }
 
         }
         printPersons(personList, new CheckPersonForAdultMale());
+
+        //Approach4:
+        //use Anonymous class for defining search criterion.
+        System.out.println("\nApproach4:18+M");
+        printPersons(personList, new CheckPerson() {
+            public boolean test(Person p) {
+                return p.gender == Person.SEX.MALE && p.getAge() >= 18; //18+ Male
+            }
+        });
     }
 }
