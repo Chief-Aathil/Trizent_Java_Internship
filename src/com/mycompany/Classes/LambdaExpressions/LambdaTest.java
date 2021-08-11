@@ -2,6 +2,7 @@ package com.mycompany.Classes.LambdaExpressions;
 
 
 import java.util.List;
+import java.util.function.Predicate;
 
 public class LambdaTest {
 
@@ -60,6 +61,20 @@ public class LambdaTest {
         }
     }
 
+
+    /*
+     *Approach6:
+     *Using Standard Function instead of checkPerson.test().
+     * This removes the need to create the checkPerson interface.
+     */
+    public static void printPersonsWithPredicate(List<Person> list, Predicate<Person> tester) {
+        for (Person p : list) {
+            if (tester.test(p)) {
+                p.printPerson();
+            }
+        }
+    }
+
     public static void main(String[] args) {
         LambdaTest testObj = new LambdaTest();
         List<Person> personList = Person.constructList();
@@ -87,11 +102,12 @@ public class LambdaTest {
         //Approach4:
         //use Anonymous class for defining search criterion.
         System.out.println("\nApproach4:18+M Using Anonymous class");
-        printPersons(personList, new CheckPerson() {
-            public boolean test(Person p) {
-                return p.gender == Person.SEX.MALE && p.getAge() >= 18; //18+ Male
-            }
-        });
+        printPersons(personList,
+                new CheckPerson() {
+                    public boolean test(Person p) {
+                        return p.gender == Person.SEX.MALE && p.getAge() >= 18; //18+ Male
+                    }
+                });
 
         //Approach5:
         //Using Lambda Expressions instead of Anonymous class since the interface is a functional interface.
@@ -102,5 +118,14 @@ public class LambdaTest {
         printPersons(personList,
                 arg -> arg.gender == Person.SEX.MALE
                         && arg.getAge() >= 18);
+
+        /*
+        Approach6:
+        Using Standard Predicate function
+         */
+        System.out.println("\nApproach6: Using standard function");
+        printPersonsWithPredicate(personList,
+                p -> p.gender == Person.SEX.MALE
+                        && p.getAge() >= 18);
     }
 }
