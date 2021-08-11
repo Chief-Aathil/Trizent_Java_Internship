@@ -75,7 +75,7 @@ public class LambdaTest {
 
         //Approach3:
         //This is the class for defining search criterion.
-        System.out.println("\nApproach3:18+M");
+        System.out.println("\nApproach3:18+M Using Local class");
         class CheckPersonForAdultMale implements CheckPerson {
             public boolean test(Person p) {
                 return p.getAge() > 18 && p.gender == Person.SEX.MALE; //18+ Male
@@ -86,11 +86,21 @@ public class LambdaTest {
 
         //Approach4:
         //use Anonymous class for defining search criterion.
-        System.out.println("\nApproach4:18+M");
+        System.out.println("\nApproach4:18+M Using Anonymous class");
         printPersons(personList, new CheckPerson() {
             public boolean test(Person p) {
                 return p.gender == Person.SEX.MALE && p.getAge() >= 18; //18+ Male
             }
         });
+
+        //Approach5:
+        //Using Lambda Expressions instead of Anonymous class since the interface is a functional interface.
+        //This further reduces the code required.
+        //Here arg is the argument passed to the function(implementation of checkPerson.test
+        //and the body of the function is preceded by the arrow token( -> )
+        System.out.println("\nApproach5:18+M Using Lambda Expressions");
+        printPersons(personList,
+                arg -> arg.gender == Person.SEX.MALE
+                        && arg.getAge() >= 18);
     }
 }
