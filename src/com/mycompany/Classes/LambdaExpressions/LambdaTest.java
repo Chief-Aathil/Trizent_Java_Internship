@@ -2,6 +2,7 @@ package com.mycompany.Classes.LambdaExpressions;
 
 
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 public class LambdaTest {
@@ -75,6 +76,27 @@ public class LambdaTest {
         }
     }
 
+    /*
+     *Approach 7:
+     * Using Lambda expressions more extensively.
+     * Instead of calling printPerson of Person class, you can replace it with a lambda expression by using
+     * appropriate standard interface.
+     * Here you are effectively replacing the action to be performed on the matched persons.
+     * You can still use printPerson however you can perform any other action,when needed, at function call
+     * without changing function definition.
+     */
+    public static void processPersons(
+            List<Person> list,
+            Predicate<Person> tester,
+            Consumer<Person> block) {
+        for (Person p : list) {
+            if (tester.test(p)) {
+                block.accept(p); //accept() is used instead of printPerson in Person class.
+            }
+        }
+    }
+
+
     public static void main(String[] args) {
         LambdaTest testObj = new LambdaTest();
         List<Person> personList = Person.constructList();
@@ -127,5 +149,17 @@ public class LambdaTest {
         printPersonsWithPredicate(personList,
                 p -> p.gender == Person.SEX.MALE
                         && p.getAge() >= 18);
+
+         /*
+        Approach 7:
+        Using Lambda expressions more extensively
+         */
+        System.out.println("\nApproach 7: Using Lambda expressions more extensively");
+        processPersons(
+                personList,
+                p -> p.gender == Person.SEX.MALE
+                        && p.getAge() >= 18,
+                b -> b.printPerson()
+        );
     }
 }
