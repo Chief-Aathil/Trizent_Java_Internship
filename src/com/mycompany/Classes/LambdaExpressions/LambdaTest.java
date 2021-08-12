@@ -3,6 +3,7 @@ package com.mycompany.Classes.LambdaExpressions;
 
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class LambdaTest {
@@ -96,6 +97,24 @@ public class LambdaTest {
         }
     }
 
+    /*Another example for Approach 7
+     *Lambda expression with return.
+     * A call to this function can use one Lambda expression to return a String
+     * which can be then used to call another Lambda expression
+     */
+    public static void processPersonsWithFunction(
+            List<Person> list,
+            Predicate<Person> tester,
+            Function<Person, String> mapper,
+            Consumer<String> block) {
+        for (Person p : list) {
+            if (tester.test(p)) {
+                String data = mapper.apply(p);
+                block.accept(data);
+            }
+        }
+    }
+
 
     public static void main(String[] args) {
         LambdaTest testObj = new LambdaTest();
@@ -160,6 +179,18 @@ public class LambdaTest {
                 p -> p.gender == Person.SEX.MALE
                         && p.getAge() >= 18,
                 b -> b.printPerson()
+        );
+
+        /*
+        Approach 7: Second example
+         */
+        System.out.println("\nApproach 7: Second example");
+        processPersonsWithFunction(
+                personList,
+                p -> p.gender == Person.SEX.MALE
+                        && p.getAge() >= 18,
+                b -> b.name + " is " + b.getAge() + " years old.",
+                out -> System.out.println(out)
         );
     }
 }
