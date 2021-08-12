@@ -116,6 +116,24 @@ public class LambdaTest {
     }
 
 
+    /*
+     *Approach 8:
+     *Using generics so that this logic can be applied to other class besides Person class
+     */
+    public static <X, Y> void processElements(
+            Iterable<X> source,
+            Predicate<X> tester,
+            Function<X, Y> mapper,
+            Consumer<Y> block) {
+        for (X item : source) {
+            if (tester.test(item)) {
+                Y data = mapper.apply(item);
+                block.accept(data);
+            }
+        }
+    }
+
+
     public static void main(String[] args) {
         LambdaTest testObj = new LambdaTest();
         List<Person> personList = Person.constructList();
@@ -190,6 +208,19 @@ public class LambdaTest {
                 p -> p.gender == Person.SEX.MALE
                         && p.getAge() >= 18,
                 b -> b.name + " is " + b.getAge() + " years old.",
+                out -> System.out.println(out)
+        );
+
+        /*
+        Approach 8:
+        Using generics
+         */
+        System.out.println("\nApproach 8: Using generics");
+        processElements(
+                personList,
+                p -> p.gender == Person.SEX.MALE
+                        && p.getAge() >= 18,
+                p -> p.name + " is " + p.getAge() + " years old.",
                 out -> System.out.println(out)
         );
     }
