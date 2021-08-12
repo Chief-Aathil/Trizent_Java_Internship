@@ -223,5 +223,23 @@ public class LambdaTest {
                 p -> p.name + " is " + p.getAge() + " years old.",
                 out -> System.out.println(out)
         );
+
+        /*
+         *Approach 9:
+         * Using Aggregate operations that accept lambda expressions as parameters.
+         */
+        System.out.println("\nApproach 9: Using Aggregate Operations");
+        personList
+                .stream()
+                .filter(
+                        p -> p.gender == Person.SEX.MALE
+                                && p.getAge() >= 18
+                )
+                .map(
+                        p -> p.name + " is " + p.getAge() + " years old."
+                )
+                .forEach(
+                        out -> System.out.println(out)
+                );
     }
 }
