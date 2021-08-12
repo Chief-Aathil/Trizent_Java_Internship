@@ -1,5 +1,8 @@
 package com.mycompany.Annotations;
 
+import java.lang.annotation.Documented;
+
+@Documented //to make the information in MyAnnotation appear in JavaDoc-generated documentation
 @interface MyAnnotation {
     String author();
 
