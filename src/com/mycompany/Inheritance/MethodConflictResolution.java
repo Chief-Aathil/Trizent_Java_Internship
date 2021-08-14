@@ -43,6 +43,29 @@ class Lion implements WildAnimal, FourLeggedAnimal {
 }
 
 
+/*
+Case 3: Independent definitions for a method
+ */
+interface Super1 {
+    default String commonFunc() {
+        return "Super1";
+    }
+}
+
+interface Super2 {
+    default String commonFunc() {
+        return "Super2";
+    }
+}
+
+class Sub implements Super1, Super2 {
+
+    //Without the following definition , the compiler gives error.
+    public String commonFunc() {
+        return "Sub";
+    }
+}
+
 public class MethodConflictResolution {
     public static void main(String[] args) {
 
@@ -58,5 +81,10 @@ public class MethodConflictResolution {
          */
         Lion lion = new Lion();
         System.out.println("\n" + lion.whoAmI());
+
+
+        //Case 3:
+        Sub sub = new Sub();
+        System.out.println("\n" + sub.commonFunc());
     }
 }
