@@ -8,9 +8,12 @@ import java.util.regex.Pattern;
 public class RegexTest {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        String input;
         while (true) {
             System.out.println("\nEnter your regex: ");
-            Pattern pattern = Pattern.compile(scanner.nextLine());
+            input = scanner.nextLine();
+            if (input.equals("exit")) break;
+            Pattern pattern = Pattern.compile(input);
             System.out.println("\nEnter string to search: ");
             Matcher matcher = pattern.matcher(scanner.nextLine());
             boolean found = false;
