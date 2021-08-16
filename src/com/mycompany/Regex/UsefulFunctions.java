@@ -23,6 +23,9 @@ public class UsefulFunctions {
         for (String s : strArray) {
             System.out.println(s);
         }
+
+        str3 = str3.replace("123", "xyz");
+        System.out.println("\nreplace: " + str3);
     }
 
 
