@@ -11,6 +11,13 @@ public class UsefulFunctions {
         Pattern pattern = Pattern.compile(regex);
         System.out.println("compile: " + pattern.toString()); // return string representation of pattern
 
+        String str1 = "abc@123";
+        String str2 = str1;
+        String str3 = "123@abc";
+        System.out.println(str1.matches("[abc]"));
+        System.out.println(str1.matches(str2));
+        System.out.println(str1.matches(str3));
+
     }
 
 
