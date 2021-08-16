@@ -18,6 +18,11 @@ public class UsefulFunctions {
         System.out.println(str1.matches(str2));
         System.out.println(str1.matches(str3));
 
+        String[] strArray = str1.split("1");
+        System.out.println("\nsplit :");
+        for (String s : strArray) {
+            System.out.println(s);
+        }
     }
 
 
