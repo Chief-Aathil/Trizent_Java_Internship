@@ -25,5 +25,19 @@ public class SetExample {
             System.out.print(i + " ");
         }
         System.out.println("\n" + (mySet3 instanceof HashSet));
+        System.out.println("mySet1.add(1): " + mySet1.add(1)); //attempting to add duplicate element
+        mySet1.remove(5);
+
+
+        Set<Integer> mySet4 = new LinkedHashSet<>(Arrays.asList(100, 200, 300));
+        Set<Integer> union = new HashSet<>(mySet2);
+        System.out.println("\nmySet4: " + mySet4);
+        System.out.println("union:" + union);
+        union.addAll(mySet4);
+        System.out.println("union after addAll():" + union);
+        union = new TreeSet<>(union);
+        System.out.println("union(TreeSet):" + union);
+
+
     }
 }
