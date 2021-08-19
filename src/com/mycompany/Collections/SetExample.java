@@ -43,5 +43,10 @@ public class SetExample {
         intersection.retainAll(Arrays.asList(1, 2, 3));
         System.out.println("intersection after retainAll(): " + intersection);
 
+        Set<Integer> diff = new TreeSet<>(mySet2);
+        System.out.println("diff:" + diff);
+        diff.removeAll(intersection);
+        System.out.println("diff after removeAll(): " + diff);
+
     }
 }
