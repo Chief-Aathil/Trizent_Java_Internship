@@ -38,6 +38,10 @@ public class SetExample {
         union = new TreeSet<>(union);
         System.out.println("union(TreeSet):" + union);
 
+        Set<Integer> intersection = new TreeSet<>(mySet1);
+        System.out.println("intersection: " + intersection);
+        intersection.retainAll(Arrays.asList(1, 2, 3));
+        System.out.println("intersection after retainAll(): " + intersection);
 
     }
 }
