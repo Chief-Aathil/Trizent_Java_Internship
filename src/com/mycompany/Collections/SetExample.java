@@ -6,11 +6,22 @@ import java.util.stream.Collectors;
 public class SetExample {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Integer[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        Integer[] arr = {1, 3, 10, 9, 2, 8, 5, 4, 6, 7};
+
         Set<Integer> mySet1 = new HashSet<>(Arrays.asList(arr));
+        Set<Integer> mySet2 = new TreeSet<>(Arrays.asList(arr));
+        Set<Integer> mySet3 = new LinkedHashSet<>(Arrays.asList(arr));
         mySet1.add(0);
-        System.out.println("mySet1:");
+        System.out.println("mySet1(HashSet):");
         for (Integer i : mySet1) {
+            System.out.print(i + " ");
+        }
+        System.out.println("\nmySet2(TreeSet):");
+        for (Integer i : mySet2) {
+            System.out.print(i + " ");
+        }
+        System.out.println("\nmySet3(LinkedHashSet):");
+        for (Integer i : mySet3) {
             System.out.print(i + " ");
         }
     }
