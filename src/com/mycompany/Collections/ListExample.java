@@ -1,6 +1,7 @@
 package com.mycompany.Collections;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,6 +22,15 @@ public class ListExample {
         System.out.println("list2:" + list2);
         System.out.println(list1 instanceof ArrayList);
         System.out.println(list2 instanceof LinkedList);
-        
+
+        List<String> list3 = list1.stream()
+                .map(s -> "its a " + s)
+                .collect(Collectors.toCollection(LinkedList::new));
+        Iterator<String> listIterator = list3.listIterator();
+        System.out.println("list3:");
+        while (listIterator.hasNext()) {
+            System.out.print("\"" + listIterator.next() + "\"\t");
+        }
+
     }
 }
