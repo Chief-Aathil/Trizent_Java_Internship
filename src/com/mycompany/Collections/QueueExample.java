@@ -13,5 +13,14 @@ public class QueueExample {
             System.out.println("queue.remove():" + queue.remove() + "\t queue:" + queue);
 
         }
+        Queue<String> priorityQ = new PriorityQueue<>(set1); // elements are ordered based on value.
+        System.out.println("priorityQ:" + priorityQ);
+        priorityQ.add("five");
+        System.out.println("priorityQ:" + priorityQ);
+        priorityQ.offer("eight");
+        System.out.println("priorityQ:" + priorityQ);
+        priorityQ.add("six");
+        System.out.println("priorityQ:" + priorityQ);
+
     }
 }
