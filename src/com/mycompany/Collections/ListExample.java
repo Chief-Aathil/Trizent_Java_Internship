@@ -1,9 +1,6 @@
 package com.mycompany.Collections;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class ListExample {
@@ -41,6 +38,10 @@ public class ListExample {
         // so any change in the original list is reflected in the sublist(view)
         list1.set(1, "ball");
         System.out.println("list1:" + list1 + "\nview:" + view);
+        list1.sort((o1, o2) -> o2.compareTo(o1));
+        System.out.println("list1:" + list1);
+        list2.sort(Comparator.reverseOrder());
+        System.out.println("list1:" + list2);
 
     }
 }
