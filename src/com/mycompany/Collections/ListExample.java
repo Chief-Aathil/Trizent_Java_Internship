@@ -32,5 +32,15 @@ public class ListExample {
             System.out.print("\"" + listIterator.next() + "\"\t");
         }
 
+        list1.add("elephant");
+        list1.add("frog");
+        System.out.println("list1.size:" + list1.size());
+        List<String> view = list1.subList(1, 3);
+        System.out.println("list1:" + list1 + "\nview:" + view);
+        // view is backed by the list with which it was used to create.
+        // so any change in the original list is reflected in the sublist(view)
+        list1.set(1, "ball");
+        System.out.println("list1:" + list1 + "\nview:" + view);
+
     }
 }
