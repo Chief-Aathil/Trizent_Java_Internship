@@ -37,7 +37,7 @@ public class ListExample {
         System.out.println("list1.size:" + list1.size());
         List<String> view = list1.subList(1, 3);
         System.out.println("list1:" + list1 + "\nview:" + view);
-        // view is backed by the list with which it was used to create.
+        // view is backed by the list with which it was created.
         // so any change in the original list is reflected in the sublist(view)
         list1.set(1, "ball");
         System.out.println("list1:" + list1 + "\nview:" + view);
