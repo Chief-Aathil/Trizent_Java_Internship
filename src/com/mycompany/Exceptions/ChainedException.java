@@ -8,6 +8,8 @@ public class ChainedException {
             throw new Exception();
         } catch (Exception e) {
             throw new IOException(e);
+        } finally {
+            throw new ArithmeticException();
         }
     }
 
@@ -17,6 +19,13 @@ public class ChainedException {
             thrower();
         } catch (Exception e) {
             e.printStackTrace();
+            if (e.getSuppressed().length != 0) {
+                System.out.println("Suppressed Exceptions:");
+                for (Throwable t : e.getSuppressed()) {
+                    t.printStackTrace();
+                }
+            }
+
         }
     }
 }
