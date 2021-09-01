@@ -25,6 +25,6 @@ public class SubclassThread extends Thread {
         MySubClass obj3 = new MySubClass();
         Thread t1 = new Thread(obj3);
         t1.start();
-        
+        obj3.start();
     }
 }
