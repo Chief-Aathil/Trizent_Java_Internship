@@ -40,5 +40,8 @@ public class Interrupt {
         System.out.println("Main Thread entering sleep..");
         Thread.sleep(3000); //wait for 3 sec before interrupting
         t.interrupt();
+        if (t.isInterrupted()) {
+            System.out.println("Thread:\"" + t.getName() + "\" is interrupted");
+        }
     }
 }
